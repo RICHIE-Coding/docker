@@ -1,0 +1,14 @@
+services:
+  api:
+    build: ./api
+    ports:
+      - "3000:3000"
+
+  ui:
+    image: nginx:1.21.5-alpine
+    ports:
+      - "4000:80"
+    volumes:
+      - ./ui:/usr/share/nginx/html:ro
+    depends_on:
+      - api
